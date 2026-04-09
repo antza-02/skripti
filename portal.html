@@ -45,6 +45,7 @@
         <div class="grid">
           <article class="card site-card">
             <h3>Your site</h3>
+            <p class="subtext">Your live website managed by our team.</p>
             <p class="site-url"><a href="#" aria-disabled="true">https://northstarclinic.fi</a></p>
             <div class="meta">
               <span>Status: <strong>Live</strong></span>
@@ -54,16 +55,21 @@
 
           <article class="card stats-card">
             <h3>Key stats (last 30 days)</h3>
+            <p class="subtext">A snapshot of how your website is performing. Compare monthly to spot trends.</p>
             <div class="stats-grid">
-              <div><span>Users</span><strong>12,480</strong></div>
-              <div><span>Sessions</span><strong>16,920</strong></div>
-              <div><span>Conversions</span><strong>412</strong></div>
-              <div><span>Bounce rate</span><strong>34.2%</strong></div>
+              <div><span>Users</span><strong>12,480</strong><small>Unique people who visited your site</small></div>
+              <div><span>Sessions</span><strong>16,920</strong><small>Total browsing sessions across all users</small></div>
+              <div><span>Conversions</span><strong>412</strong><small>Visitors who completed a goal (e.g. booking)</small></div>
+              <div><span>Bounce rate</span><strong>34.2%</strong><small>Visitors who left after one page</small></div>
             </div>
           </article>
 
           <article class="card chart-card">
-            <h3>Traffic trend</h3>
+            <div class="row-head">
+              <h3>Traffic trend</h3>
+              <span class="trend-badge">+152%</span>
+            </div>
+            <p class="subtext">Weekly visitors over the last 12 weeks.</p>
             <div class="bars" aria-label="Mock traffic bars">
               <div style="--h:32%"></div>
               <div style="--h:48%"></div>
@@ -82,6 +88,7 @@
 
           <article class="card sources-card">
             <h3>Top traffic sources</h3>
+            <p class="subtext">Where your visitors come from. Focus efforts on highest-share channels.</p>
             <table>
               <thead>
                 <tr><th>Source</th><th>Users</th><th>Share</th></tr>
@@ -97,6 +104,7 @@
 
           <article class="card chat-card">
             <h3>Change requests chat</h3>
+            <p class="subtext">Send website update requests here: text, sections, images, and more.</p>
             <div id="chat-thread" class="chat-thread"></div>
             <form id="chat-form" class="chat-form">
               <input id="chat-input" type="text" placeholder="Describe the change you need..." required>

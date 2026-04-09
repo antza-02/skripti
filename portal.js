@@ -5,9 +5,10 @@ const MOCK_USER = {
 };
 
 const INITIAL_MESSAGES = [
-  { role: "team", text: "Hi! Welcome to your client dashboard mockup." },
   { role: "client", text: "Can we add a new homepage section for spring services?" },
-  { role: "team", text: "Absolutely. Please share text + images and we will implement it." }
+  { role: "team", text: "Absolutely. Please share text + images and we will implement it." },
+  { role: "client", text: "I want to update the opening hours to mon-sat closed." },
+  { role: "team", text: "Received. We logged this as a mock change request." }
 ];
 
 const loginView = document.getElementById("login-view");
