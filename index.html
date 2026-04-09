@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="fi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Skripti - Verkkosivut kuukausimaksulla</title>
+  <meta name="description" content="Ammattimaiset verkkosivut, yllapito ja jatkuvat paivitykset yhdella kiintealla kuukausimaksulla ilman yllatyksia.">
+  <meta name="robots" content="index,follow">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Skripti - Verkkosivut kuukausimaksulla">
+  <meta property="og:description" content="Sivusto valmiina 14 paivassa. Hosting, yllapito ja paivitykset samalla kuukausihinnalla.">
+  <meta property="og:image" content="/assets/social-preview.svg">
+  <meta property="og:url" content="https://skripti.fi/">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Skripti - Verkkosivut kuukausimaksulla">
+  <meta name="twitter:description" content="Sivusto valmiina 14 paivassa. Hosting, yllapito ja paivitykset samalla kuukausihinnalla.">
+  <meta name="twitter:image" content="/assets/social-preview.svg">
+  <link rel="canonical" href="https://skripti.fi/">
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./styles.css">
+  <script defer src="./main.js"></script>
+</head>
+<body>
+  <div class="page" id="app">
+    <header class="nav" aria-label="Paavalikko">
+      <div class="nav-logo">Skripti<span>.</span></div>
+      <div class="nav-links">
+        <button class="nav-link" type="button" onclick="scrollToSection('solutions')">Ratkaisut</button>
+        <button class="nav-link" type="button" onclick="scrollToSection('pricing')">Hinnat</button>
+        <button class="nav-link" type="button" onclick="scrollToSection('faq')">UKK</button>
+        <button class="nav-cta" type="button" onclick="openModal()">Aloita nyt</button>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero" aria-labelledby="hero-heading">
+        <div class="hero-badge">Verkkosivut kuukausimaksulla - kaikki mukana</div>
+        <h1 id="hero-heading">Yrityksesi ansaitsee<br>verkkosivut jotka<br><em>tekevat toita.</em></h1>
+        <p>Ammattimaiset verkkosivut, yllapito ja jatkuvat paivitykset yhdella kiintealla kuukausimaksulla. Ei toimistolaskuja. Ei yllatyksia.</p>
+        <div class="hero-cta-group">
+          <button class="btn-primary" type="button" onclick="openModal()">Aloita - sivusto valmis 14 paivassa</button>
+          <button class="btn-secondary" type="button" onclick="scrollToSection('solutions')">Katso esimerkit</button>
+        </div>
+        <div class="hero-stats">
+          <div class="stat"><div class="stat-num">14</div><div class="stat-label">paivaa sivusto valmiina</div></div>
+          <div class="stat"><div class="stat-num orange">∞</div><div class="stat-label">paivityksia kuukaudessa</div></div>
+          <div class="stat"><div class="stat-num">3</div><div class="stat-label">kielta vakiona</div></div>
+          <div class="stat"><div class="stat-num">0</div><div class="stat-label">piilokustannuksia</div></div>
+        </div>
+      </section>
+
+      <section class="section alt" aria-labelledby="how-heading">
+        <div class="section-label">Miten se toimii</div>
+        <h2 id="how-heading">Kolme vaihetta.<br>Sitten unohda se.</h2>
+        <div>
+          <div class="step"><div class="step-num">1</div><div><h3>Kerrot yrityksestasi</h3><p>Taytat lyhyen lomakkeen - toimiala, logo, varit, sisalto. 15 minuuttia, ei enempaa.</p></div></div>
+          <div class="step"><div class="step-num">2</div><div><h3>Sivustosi on valmis 14 paivassa</h3><p>Rakennamme ammattimaisen, nopeasti latautuvan sivuston kolmella kielella - optimoitu hakukoneille.</p></div></div>
+          <div class="step"><div class="step-num">3</div><div><h3>Lahetat toiveet, me toteutamme</h3><p>Uusi palvelu, muuttunut hinnasto - lahetat viestin ja sivusto paivitetaan saman paivan aikana.</p></div></div>
+        </div>
+      </section>
+
+      <section class="section" id="solutions" aria-labelledby="solutions-heading">
+        <div class="section-label">Ratkaisut</div>
+        <h2 id="solutions-heading">Tehty juuri sinun alallesi.</h2>
+        <p class="body">Jokaisella alalla on omat tarpeensa. Skripti tunnistaa ne.</p>
+        <div class="tabs" id="sol-tabs"></div>
+        <div class="sol-panel" id="sol-panel"></div>
+      </section>
+
+      <section class="section alt" id="pricing" aria-labelledby="pricing-heading">
+        <div class="section-label">Hinnoittelu</div>
+        <h2 id="pricing-heading">Selkea hinta.<br>Ei piilokuluja.</h2>
+        <div class="pricing-grid">
+          <article class="pc">
+            <div class="pc-tier">Starter</div>
+            <div class="pc-price">EUR 99<span>/kk</span></div>
+            <div class="pc-desc">Pienet yritykset</div>
+            <div class="pc-feat"><span class="ok">+</span>5-sivuinen sivusto</div>
+            <div class="pc-feat"><span class="ok">+</span>FI + EN</div>
+            <div class="pc-feat"><span class="ok">+</span>2 paivitysta/kk</div>
+            <div class="pc-feat"><span class="ok">+</span>Hosting + SSL</div>
+            <button class="pc-cta-outline" type="button" onclick="openModal('starter')">Aloita nyt</button>
+          </article>
+          <article class="pc featured">
+            <div class="pc-badge">Suosituin</div>
+            <div class="pc-tier">Standard</div>
+            <div class="pc-price">EUR 169<span>/kk</span></div>
+            <div class="pc-desc">Kasvavat yritykset</div>
+            <div class="pc-feat"><span class="ok">+</span>8-sivuinen sivusto</div>
+            <div class="pc-feat"><span class="ok">+</span>FI + EN + SV</div>
+            <div class="pc-feat"><span class="ok">+</span>Rajattomat paivitykset</div>
+            <div class="pc-feat"><span class="ok">+</span>Toimialaintegraatiot</div>
+            <div class="pc-feat"><span class="ok">+</span>Google My Business</div>
+            <button class="pc-cta-filled" type="button" onclick="openModal('standard')">Aloita nyt</button>
+          </article>
+          <article class="pc">
+            <div class="pc-tier">Pro</div>
+            <div class="pc-price">EUR 269<span>/kk</span></div>
+            <div class="pc-desc">Vakiintuneet yritykset</div>
+            <div class="pc-feat"><span class="ok">+</span>Rajattomat sivut</div>
+            <div class="pc-feat"><span class="ok">+</span>Saman paivan paivitys</div>
+            <div class="pc-feat"><span class="ok">+</span>Kuukausittainen SEO</div>
+            <div class="pc-feat"><span class="ok">+</span>Google-mainokset</div>
+            <button class="pc-cta-outline" type="button" onclick="openModal('pro')">Aloita nyt</button>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="faq" aria-labelledby="faq-heading">
+        <div class="section-label">UKK</div>
+        <h2 id="faq-heading">Usein kysyttya.</h2>
+        <div id="faq-list"></div>
+      </section>
+
+      <section class="final-cta" aria-labelledby="cta-heading">
+        <h2 id="cta-heading">Valmis aloittamaan?<br><em>Sivusto valmiina 14 paivassa.</em></h2>
+        <p>Liity satojen suomalaisten yritysten joukkoon joilla on verkkosivut jotka toimivat.</p>
+        <button class="btn-primary" style="font-size:15px;padding:14px 32px;" type="button" onclick="openModal()">Aloita nyt - valitse pakettisi</button>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-logo">Skripti<span>.</span></div>
+      <div class="footer-r">skripti.fi - Helsinki, Suomi</div>
+    </footer>
+  </div>
+
+  <div class="overlay hidden" id="overlay" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="modal-title" onclick="handleOverlayClick(event)">
+    <div class="modal" id="modal">
+      <div class="modal-header">
+        <div class="modal-title" id="modal-title">Aloita</div>
+        <button class="modal-close" type="button" aria-label="Sulje ikkuna" onclick="closeModal()">×</button>
+      </div>
+      <div class="modal-body" id="modal-body"></div>
+    </div>
+  </div>
+</body>
+</html>

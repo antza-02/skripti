@@ -1,0 +1,549 @@
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#fff;color:#111210;}
+.page{max-width:100%;overflow-x:hidden;}
+
+/* NAV */
+.nav{display:flex;justify-content:space-between;align-items:center;padding:14px 32px;background:#111210;position:sticky;top:0;z-index:100;}
+.nav-logo{font-size:18px;font-weight:500;color:#fff;letter-spacing:-0.02em;cursor:pointer;}
+.nav-logo span{color:#F97316;}
+.nav-links{display:flex;gap:20px;align-items:center;}
+.nav-link{font-size:13px;color:rgba(255,255,255,0.5);cursor:pointer;background:none;border:none;}
+.nav-link:hover{color:rgba(255,255,255,0.8);}
+.nav-cta{font-size:13px;font-weight:500;color:#fff;background:#F97316;padding:8px 18px;border-radius:8px;cursor:pointer;border:none;}
+.nav-cta:hover{background:#EA6A05;}
+
+/* HERO */
+.hero{background:#111210;padding:64px 32px 56px;text-align:center;}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(249,115,22,0.12);color:#F97316;font-size:12px;font-weight:500;padding:5px 14px;border-radius:20px;margin-bottom:24px;border:0.5px solid rgba(249,115,22,0.25);}
+.hero h1{font-size:42px;font-weight:500;color:#fff;line-height:1.12;letter-spacing:-0.025em;margin-bottom:18px;}
+.hero h1 em{color:#F97316;font-style:normal;}
+.hero p{font-size:16px;color:rgba(255,255,255,0.55);line-height:1.65;max-width:440px;margin:0 auto 32px;}
+.btn-primary{font-size:14px;font-weight:500;color:#fff;background:#F97316;padding:13px 28px;border-radius:10px;cursor:pointer;border:none;}
+.btn-primary:hover{background:#EA6A05;}
+.btn-primary:active{transform:scale(0.97);}
+.btn-secondary{font-size:14px;color:rgba(255,255,255,0.6);background:transparent;padding:13px 24px;border-radius:10px;cursor:pointer;border:0.5px solid rgba(255,255,255,0.15);}
+.hero-cta-group{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
+.hero-stats{display:flex;gap:0;justify-content:center;margin-top:44px;border-top:0.5px solid rgba(255,255,255,0.08);padding-top:32px;}
+.stat{flex:1;text-align:center;padding:0 12px;border-right:0.5px solid rgba(255,255,255,0.08);}
+.stat:last-child{border-right:none;}
+.stat-num{font-size:26px;font-weight:500;color:#fff;}
+.stat-num.orange{color:#F97316;}
+.stat-label{font-size:11px;color:rgba(255,255,255,0.4);margin-top:4px;}
+
+/* SECTIONS */
+.section{padding:52px 32px;}
+.section.alt{background:#F7F4EE;}
+.section-label{font-size:11px;font-weight:500;color:#F97316;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:10px;}
+.section h2{font-size:28px;font-weight:500;color:#111210;line-height:1.25;margin-bottom:14px;letter-spacing:-0.015em;}
+.section p.body{font-size:15px;color:#5C5C58;line-height:1.7;}
+
+/* HOW */
+.step{display:flex;gap:16px;padding:20px 0;border-bottom:0.5px solid #E8E4DC;}
+.step:last-child{border-bottom:none;}
+.step-num{width:34px;height:34px;min-width:34px;border-radius:50%;background:#111210;color:#F97316;font-size:13px;font-weight:500;display:flex;align-items:center;justify-content:center;}
+.step h3{font-size:15px;font-weight:500;color:#111210;margin-bottom:5px;}
+.step p{font-size:13px;color:#5C5C58;line-height:1.6;}
+
+/* SOLUTIONS */
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin:20px 0 18px;}
+.tab{font-size:13px;padding:7px 14px;border-radius:8px;border:0.5px solid #E0DDD6;color:#5C5C58;cursor:pointer;background:#fff;}
+.tab.active{background:#111210;color:#F97316;border-color:#111210;}
+.sol-panel{border:0.5px solid #E0DDD6;border-radius:12px;overflow:hidden;}
+.sol-header{background:#111210;padding:20px;}
+.sol-header h3{font-size:17px;font-weight:500;color:#fff;margin-bottom:4px;}
+.sol-header p{font-size:13px;color:rgba(255,255,255,0.5);}
+.sol-body{padding:20px;background:#fff;}
+.sol-feats{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px;}
+.sol-feat{background:#F7F4EE;border-radius:8px;padding:12px;}
+.sol-feat .fl{font-size:11px;color:#888;margin-bottom:3px;}
+.sol-feat .fv{font-size:13px;font-weight:500;color:#111210;}
+.sol-quote{background:#FFF5EE;border-left:3px solid #F97316;padding:12px 14px;border-radius:0 8px 8px 0;font-size:13px;color:#5C5C58;font-style:italic;line-height:1.5;}
+
+/* PRICING */
+.pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:28px;}
+.pc{border:0.5px solid #E0DDD6;border-radius:12px;padding:20px;background:#fff;display:flex;flex-direction:column;}
+.pc.featured{border:2px solid #F97316;}
+.pc-badge{display:inline-block;font-size:10px;font-weight:500;background:#F97316;color:#fff;padding:2px 8px;border-radius:4px;margin-bottom:8px;}
+.pc-tier{font-size:11px;font-weight:500;color:#888;letter-spacing:0.05em;text-transform:uppercase;margin-bottom:8px;}
+.pc-price{font-size:30px;font-weight:500;color:#111210;letter-spacing:-0.02em;}
+.pc-price span{font-size:13px;font-weight:400;color:#888;}
+.pc-desc{font-size:12px;color:#888;margin:4px 0 14px;}
+.pc-feat{font-size:12px;color:#5C5C58;padding:5px 0;border-top:0.5px solid #F0EDE6;display:flex;gap:6px;}
+.pc-feat .ok{color:#F97316;font-weight:700;}
+.pc-cta-outline{margin-top:auto;padding-top:14px;width:100%;padding:10px;border-radius:8px;border:0.5px solid #E0DDD6;background:transparent;color:#111210;font-size:13px;font-weight:500;cursor:pointer;margin-top:16px;}
+.pc-cta-outline:hover{background:#F7F4EE;}
+.pc-cta-filled{margin-top:auto;padding-top:14px;width:100%;padding:10px;border-radius:8px;border:none;background:#F97316;color:#fff;font-size:13px;font-weight:500;cursor:pointer;margin-top:16px;}
+.pc-cta-filled:hover{background:#EA6A05;}
+
+/* FAQ */
+.faq-item{border-bottom:0.5px solid #E8E4DC;}
+.faq-btn{width:100%;background:none;border:none;text-align:left;padding:16px 0;cursor:pointer;display:flex;justify-content:space-between;align-items:center;}
+.faq-q{font-size:14px;font-weight:500;color:#111210;}
+.faq-icon{color:#F97316;font-size:18px;font-weight:300;line-height:1;}
+.faq-a{font-size:13px;color:#5C5C58;line-height:1.65;padding-bottom:14px;display:none;}
+.faq-a.open{display:block;}
+
+/* FINAL CTA */
+.final-cta{background:#111210;padding:64px 32px;text-align:center;}
+.final-cta h2{font-size:32px;font-weight:500;color:#fff;line-height:1.25;letter-spacing:-0.02em;margin-bottom:14px;}
+.final-cta h2 em{color:#F97316;font-style:normal;}
+.final-cta p{font-size:15px;color:rgba(255,255,255,0.5);margin-bottom:28px;line-height:1.6;}
+
+/* FOOTER */
+.footer{background:#0D0E0C;padding:20px 32px;display:flex;justify-content:space-between;align-items:center;}
+.footer-logo{font-weight:500;color:#fff;font-size:14px;}
+.footer-logo span{color:#F97316;}
+.footer-r{font-size:12px;color:rgba(255,255,255,0.3);}
+
+/* ── MODAL OVERLAY ── */
+.overlay{position:fixed;inset:0;background:rgba(0,0,0,0.6);z-index:200;display:flex;align-items:center;justify-content:center;padding:16px;}
+.overlay.hidden{display:none;}
+.modal{background:#fff;border-radius:16px;width:100%;max-width:520px;overflow:hidden;max-height:90vh;overflow-y:auto;}
+.modal-header{background:#111210;padding:20px 24px;display:flex;justify-content:space-between;align-items:center;}
+.modal-title{font-size:16px;font-weight:500;color:#fff;}
+.modal-close{background:none;border:none;color:rgba(255,255,255,0.5);font-size:20px;cursor:pointer;line-height:1;padding:0;}
+.modal-close:hover{color:#fff;}
+.modal-body{padding:24px;}
+
+/* PROGRESS */
+.progress-bar{display:flex;gap:6px;margin-bottom:24px;}
+.pb-step{flex:1;height:3px;border-radius:2px;background:#F0EDE6;}
+.pb-step.done{background:#F97316;}
+.pb-step.active{background:#F97316;opacity:0.5;}
+.step-title{font-size:18px;font-weight:500;color:#111210;margin-bottom:6px;letter-spacing:-0.01em;}
+.step-sub{font-size:13px;color:#5C5C58;margin-bottom:20px;line-height:1.5;}
+
+/* FORM ELEMENTS */
+.form-group{margin-bottom:14px;}
+.form-label{font-size:12px;font-weight:500;color:#5C5C58;margin-bottom:6px;display:block;text-transform:uppercase;letter-spacing:0.04em;}
+.form-input{width:100%;padding:10px 12px;border:0.5px solid #E0DDD6;border-radius:8px;font-size:14px;color:#111210;background:#fff;outline:none;}
+.form-input:focus{border-color:#F97316;box-shadow:0 0 0 3px rgba(249,115,22,0.1);}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.form-select{width:100%;padding:10px 12px;border:0.5px solid #E0DDD6;border-radius:8px;font-size:14px;color:#111210;background:#fff;outline:none;appearance:none;}
+.form-select:focus{border-color:#F97316;box-shadow:0 0 0 3px rgba(249,115,22,0.1);}
+
+/* INDUSTRY GRID */
+.industry-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:4px;}
+.industry-card{border:0.5px solid #E0DDD6;border-radius:10px;padding:14px;cursor:pointer;background:#fff;}
+.industry-card.selected{border:2px solid #F97316;background:#FFF5EE;}
+.industry-card .ic-icon{font-size:22px;margin-bottom:6px;}
+.industry-card .ic-name{font-size:13px;font-weight:500;color:#111210;}
+.industry-card .ic-sub{font-size:11px;color:#888;margin-top:2px;}
+
+/* PACKAGE CARDS */
+.pkg-list{display:flex;flex-direction:column;gap:10px;}
+.pkg-card{border:0.5px solid #E0DDD6;border-radius:10px;padding:14px 16px;cursor:pointer;background:#fff;display:flex;justify-content:space-between;align-items:center;}
+.pkg-card.selected{border:2px solid #F97316;background:#FFF5EE;}
+.pkg-left .pkg-name{font-size:14px;font-weight:500;color:#111210;}
+.pkg-left .pkg-desc{font-size:12px;color:#888;margin-top:2px;}
+.pkg-right .pkg-price{font-size:18px;font-weight:500;color:#111210;letter-spacing:-0.01em;}
+.pkg-right .pkg-price span{font-size:12px;font-weight:400;color:#888;}
+.pkg-radio{width:18px;height:18px;border-radius:50%;border:1.5px solid #E0DDD6;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-right:12px;}
+.pkg-radio.checked{border-color:#F97316;background:#F97316;}
+.pkg-radio.checked::after{content:'';width:6px;height:6px;border-radius:50%;background:#fff;}
+.pkg-card-inner{display:flex;align-items:center;}
+
+/* STRIPE UI */
+.card-preview{background:#111210;border-radius:12px;padding:20px;margin-bottom:20px;position:relative;overflow:hidden;}
+.card-preview::before{content:'';position:absolute;top:-20px;right:-20px;width:120px;height:120px;border-radius:50%;background:rgba(249,115,22,0.15);}
+.card-preview::after{content:'';position:absolute;bottom:-30px;left:20px;width:80px;height:80px;border-radius:50%;background:rgba(249,115,22,0.08);}
+.card-chip{width:32px;height:24px;border-radius:4px;background:#EF9F27;margin-bottom:16px;opacity:0.8;}
+.card-number-display{font-size:16px;color:rgba(255,255,255,0.9);letter-spacing:0.12em;font-family:monospace;margin-bottom:12px;}
+.card-meta{display:flex;justify-content:space-between;font-size:11px;color:rgba(255,255,255,0.4);text-transform:uppercase;letter-spacing:0.06em;}
+.card-meta-val{font-size:13px;color:rgba(255,255,255,0.8);margin-top:2px;}
+.card-input-wrapper{position:relative;}
+.card-brand{position:absolute;right:12px;top:50%;transform:translateY(-50%);font-size:12px;font-weight:500;color:#F97316;}
+.stripe-badge{display:flex;align-items:center;gap:6px;font-size:11px;color:#888;margin-top:14px;justify-content:center;}
+.stripe-lock{width:12px;height:12px;background:#888;border-radius:2px;}
+
+/* SUMMARY */
+.summary-box{background:#F7F4EE;border-radius:10px;padding:16px;margin-bottom:20px;}
+.summary-row{display:flex;justify-content:space-between;font-size:13px;padding:5px 0;border-bottom:0.5px solid #E8E4DC;}
+.summary-row:last-child{border-bottom:none;font-weight:500;font-size:14px;padding-top:10px;}
+.summary-row .sk{color:#5C5C58;}
+.summary-row .sv{color:#111210;}
+
+/* SUCCESS */
+.success-icon{width:56px;height:56px;border-radius:50%;background:#F97316;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;font-size:24px;}
+.success-title{font-size:22px;font-weight:500;color:#111210;text-align:center;margin-bottom:8px;}
+.success-sub{font-size:14px;color:#5C5C58;text-align:center;line-height:1.6;margin-bottom:20px;}
+.success-steps{background:#F7F4EE;border-radius:10px;padding:16px;}
+.success-step{display:flex;gap:12px;padding:8px 0;border-bottom:0.5px solid #E8E4DC;}
+.success-step:last-child{border-bottom:none;}
+.ss-num{width:22px;height:22px;border-radius:50%;background:#F97316;color:#fff;font-size:11px;font-weight:500;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.ss-text{font-size:13px;color:#5C5C58;}
+
+/* MODAL NAV */
+.modal-nav{display:flex;justify-content:space-between;align-items:center;margin-top:20px;padding-top:16px;border-top:0.5px solid #F0EDE6;}
+.btn-back{background:none;border:0.5px solid #E0DDD6;border-radius:8px;padding:10px 18px;font-size:13px;color:#5C5C58;cursor:pointer;}
+.btn-back:hover{background:#F7F4EE;}
+.btn-next{background:#F97316;border:none;border-radius:8px;padding:10px 22px;font-size:13px;font-weight:500;color:#fff;cursor:pointer;}
+.btn-next:hover{background:#EA6A05;}
+.btn-next:disabled{background:#E0DDD6;color:#999;cursor:not-allowed;}
+</style>
+
+<div class="page" id="app">
+
+<!-- NAV -->
+<div class="nav">
+  <div class="nav-logo">Skripti<span>.</span></div>
+  <div class="nav-links">
+    <button class="nav-link" onclick="scrollTo('solutions')">Ratkaisut</button>
+    <button class="nav-link" onclick="scrollTo('pricing')">Hinnat</button>
+    <button class="nav-link" onclick="scrollTo('faq')">UKK</button>
+    <button class="nav-cta" onclick="openModal()">Aloita nyt</button>
+  </div>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-badge">Verkkosivut kuukausimaksulla — kaikki mukana</div>
+  <h1>Yrityksesi ansaitsee<br>verkkosivut jotka<br><em>tekevät töitä.</em></h1>
+  <p>Ammattimaiset verkkosivut, ylläpito ja jatkuvat päivitykset yhdellä kiinteällä kuukausimaksulla. Ei toimistolaskuja. Ei yllätyksiä.</p>
+  <div class="hero-cta-group">
+    <button class="btn-primary" onclick="openModal()">Aloita — sivusto valmis 14 päivässä</button>
+    <button class="btn-secondary">Katso esimerkit</button>
+  </div>
+  <div class="hero-stats">
+    <div class="stat"><div class="stat-num">14</div><div class="stat-label">päivää sivusto valmiina</div></div>
+    <div class="stat"><div class="stat-num orange">∞</div><div class="stat-label">päivityksiä kuukaudessa</div></div>
+    <div class="stat"><div class="stat-num">3</div><div class="stat-label">kieltä vakiona</div></div>
+    <div class="stat"><div class="stat-num">0</div><div class="stat-label">piilokustannuksia</div></div>
+  </div>
+</div>
+
+<!-- HOW -->
+<div class="section alt">
+  <div class="section-label">Miten se toimii</div>
+  <h2>Kolme vaihetta.<br>Sitten unohda se.</h2>
+  <div>
+    <div class="step"><div class="step-num">1</div><div><h3>Kerrot yrityksestäsi</h3><p>Täytät lyhyen lomakkeen — toimiala, logo, värit, sisältö. 15 minuuttia, ei enempää.</p></div></div>
+    <div class="step"><div class="step-num">2</div><div><h3>Sivustosi on valmis 14 päivässä</h3><p>Rakennamme ammattimaisen, nopeasti latautuvan sivuston kolmella kielellä — optimoitu hakukoneille.</p></div></div>
+    <div class="step"><div class="step-num">3</div><div><h3>Lähetät toiveet, me toteutamme</h3><p>Uusi palvelu, muuttunut hinnasto — lähetät viestin ja sivusto päivitetään saman päivän aikana.</p></div></div>
+  </div>
+</div>
+
+<!-- SOLUTIONS -->
+<div class="section" id="solutions">
+  <div class="section-label">Ratkaisut</div>
+  <h2>Tehty juuri sinun alallesi.</h2>
+  <p class="body">Jokaisella alalla on omat tarpeensa. Skripti tunnistaa ne.</p>
+  <div class="tabs" id="sol-tabs"></div>
+  <div class="sol-panel" id="sol-panel"></div>
+</div>
+
+<!-- PRICING -->
+<div class="section alt" id="pricing">
+  <div class="section-label">Hinnoittelu</div>
+  <h2>Selkeä hinta.<br>Ei piilokuluja.</h2>
+  <div class="pricing-grid">
+    <div class="pc">
+      <div class="pc-tier">Starter</div>
+      <div class="pc-price">€99<span>/kk</span></div>
+      <div class="pc-desc">Pienet yritykset</div>
+      <div class="pc-feat"><span class="ok">+</span>5-sivuinen sivusto</div>
+      <div class="pc-feat"><span class="ok">+</span>FI + EN</div>
+      <div class="pc-feat"><span class="ok">+</span>2 päivitystä/kk</div>
+      <div class="pc-feat"><span class="ok">+</span>Hosting + SSL</div>
+      <button class="pc-cta-outline" onclick="openModal('starter')">Aloita nyt</button>
+    </div>
+    <div class="pc featured">
+      <div class="pc-badge">Suosituin</div>
+      <div class="pc-tier">Standard</div>
+      <div class="pc-price">€169<span>/kk</span></div>
+      <div class="pc-desc">Kasvavat yritykset</div>
+      <div class="pc-feat"><span class="ok">+</span>8-sivuinen sivusto</div>
+      <div class="pc-feat"><span class="ok">+</span>FI + EN + SV</div>
+      <div class="pc-feat"><span class="ok">+</span>Rajattomat päivitykset</div>
+      <div class="pc-feat"><span class="ok">+</span>Toimialaintegraatiot</div>
+      <div class="pc-feat"><span class="ok">+</span>Google My Business</div>
+      <button class="pc-cta-filled" onclick="openModal('standard')">Aloita nyt</button>
+    </div>
+    <div class="pc">
+      <div class="pc-tier">Pro</div>
+      <div class="pc-price">€269<span>/kk</span></div>
+      <div class="pc-desc">Vakiintuneet yritykset</div>
+      <div class="pc-feat"><span class="ok">+</span>Rajattomat sivut</div>
+      <div class="pc-feat"><span class="ok">+</span>Saman päivän päivitys</div>
+      <div class="pc-feat"><span class="ok">+</span>Kuukausittainen SEO</div>
+      <div class="pc-feat"><span class="ok">+</span>Google-mainokset</div>
+      <button class="pc-cta-outline" onclick="openModal('pro')">Aloita nyt</button>
+    </div>
+  </div>
+</div>
+
+<!-- FAQ -->
+<div class="section" id="faq">
+  <div class="section-label">UKK</div>
+  <h2>Usein kysyttyä.</h2>
+  <div id="faq-list"></div>
+</div>
+
+<!-- FINAL CTA -->
+<div class="final-cta">
+  <h2>Valmis aloittamaan?<br><em>Sivusto valmiina 14 päivässä.</em></h2>
+  <p>Liity satojen suomalaisten yritysten joukkoon joilla on verkkosivut jotka toimivat.</p>
+  <button class="btn-primary" style="font-size:15px;padding:14px 32px;" onclick="openModal()">Aloita nyt — valitse pakettisi</button>
+</div>
+
+<div class="footer">
+  <div class="footer-logo">Skripti<span>.</span></div>
+  <div class="footer-r">skripti.fi · Helsinki, Suomi</div>
+</div>
+
+</div>
+
+<!-- ── MODAL ── -->
+<div class="overlay hidden" id="overlay" onclick="handleOverlayClick(event)">
+<div class="modal" id="modal">
+  <div class="modal-header">
+    <div class="modal-title" id="modal-title">Aloita</div>
+    <button class="modal-close" onclick="closeModal()">×</button>
+  </div>
+  <div class="modal-body" id="modal-body"></div>
+</div>
+</div>
+
+<script>
+// ── DATA ──
+const solutions=[
+  {id:'ravintolat',label:'Ravintolat',title:'Ravintolat & kahvilat',sub:'Ruokalista, varaukset, tapahtumat',feats:[['Integraatio','Tableonline-varaus'],['Sisältö','Ruokalista + kausipäivitykset'],['Kielet','FI, EN, SV vakiona'],['Erikoisuus','Tapahtumasivut']],quote:'"Uusi sesonkiruokalista päivitetty tunnissa — ennen se vei koko päivän."'},
+  {id:'kauneus',label:'Kauneus & hyvinvointi',title:'Kauneus & hyvinvointi',sub:'Ajanvaraukset, palvelut, henkilökunta',feats:[['Integraatio','Timma / Booklr ajanvaraus'],['Sisältö','Palveluhinnasto + galleria'],['Kielet','FI + EN'],['Erikoisuus','Ennen–jälkeen-galleria']],quote:'"Asiakkaat varaavat ajan verkossa — ei enää puheluja auki ollessa."'},
+  {id:'rakentaminen',label:'Rakentaminen',title:'Rakentaminen & remontit',sub:'Referenssit, tarjouspyyntö, yhteystiedot',feats:[['Integraatio','Tarjouspyyntölomake'],['Sisältö','Referenssikohteet + kuvat'],['Kielet','FI + EN'],['Erikoisuus','Projektisalkku']],quote:'"Asiakkaat näkevät töimme ennen kuin soittavat — laadukkaammat liidit."'},
+  {id:'ammattipalvelut',label:'Ammattipalvelut',title:'Ammattipalvelut',sub:'Asianajajat, tilitoimistot, konsultit',feats:[['Integraatio','Calendly-varaukset'],['Sisältö','Palvelut + tiimi + blogi'],['Kielet','FI + EN + SV'],['Erikoisuus','Asiantuntijaprofiilit']],quote:'"Sivusto rakentaa luottamusta ennen ensimmäistä tapaamista."'},
+  {id:'kauppa',label:'Kauppa & retail',title:'Vähittäiskauppa',sub:'Tuotteet, aukioloajat, sijainti',feats:[['Integraatio','Tuoteluettelo / verkkokauppa'],['Sisältö','Tuotteet + tarjoukset'],['Kielet','FI + EN'],['Erikoisuus','Sesonkikampanjat']],quote:'"Tuotteet esillä verkossa — asiakkaat tietävät mitä löytävät."'},
+  {id:'liikunta',label:'Liikunta & urheilu',title:'Liikunta & urheilu',sub:'Tuntiohjelma, jäsenyydet, varaukset',feats:[['Integraatio','Eazybreak / tuntivaraukset'],['Sisältö','Tuntiohjelma + valmentajat'],['Kielet','FI + EN'],['Erikoisuus','Jäsenyyssivut']],quote:'"Uudet asiakkaat löytävät meidät Googlesta — ei enää pelkkä some."'}
+];
+
+const faqs=[
+  ['Mitä tarkoittaa "rajattomat päivitykset"?','Kaikki sisältömuutokset — uudet palvelut, hinnaston päivitykset, kuvat, tekstit, aukioloajat — kuuluvat hintaan. Lähetät pyynnön, me toteutamme.'],
+  ['Mitä jos haluan lopettaa?','Peruuta milloin tahansa ilman irtisanomismaksuja. Domain siirtyy sinulle ja saat kaikki tiedostot haltuusi.'],
+  ['Onko hosting mukana hinnassa?','Kyllä — hosting, SSL-sertifikaatti, domain (ensimmäinen vuosi) ja Cloudflare-tietoturva sisältyvät kaikkiin paketteihin.'],
+  ['Miten toimialaintegraatiot toimivat?','Ravintolalle rakennamme varausjärjestelmän, kauneushoitolalle ajanvarauksen, verkkokaupalle tuoteluettelon — ilman lisähintaa Standard- ja Pro-paketeissa.'],
+  ['Kuinka nopeasti sivusto on valmis?','14 päivässä ensimmäisestä yhteydenotosta. Pro-asiakkaille pystymme toimittamaan nopeammin.']
+];
+
+const packages={
+  starter:{name:'Starter',price:99,desc:'5-sivuinen sivusto, FI+EN, 2 päivitystä/kk'},
+  standard:{name:'Standard',price:169,desc:'8-sivuinen sivusto, FI+EN+SV, rajattomat päivitykset + integraatiot'},
+  pro:{name:'Pro',price:269,desc:'Rajattomat sivut, saman päivän päivitys, SEO + Google-mainokset'}
+};
+
+const industries=[
+  {id:'ravintolat',icon:'🍽',name:'Ravintola / kahvila',sub:'Ruokalista, varaukset'},
+  {id:'kauneus',icon:'✂',name:'Kauneus & hyvinvointi',sub:'Ajanvaraukset, palvelut'},
+  {id:'rakentaminen',icon:'🔧',name:'Rakennus & remontit',sub:'Referenssit, tarjoukset'},
+  {id:'ammattipalvelut',icon:'💼',name:'Ammattipalvelut',sub:'Konsultointi, asiantuntija'},
+  {id:'kauppa',icon:'🛍',name:'Kauppa & retail',sub:'Tuotteet, myymälä'},
+  {id:'liikunta',icon:'⚡',name:'Liikunta & urheilu',sub:'Tunnit, jäsenyydet'},
+  {id:'muu',icon:'✦',name:'Muu toimiala',sub:'Kaikki muut yritykset'}
+];
+
+// ── STATE ──
+let activeSol=0;
+let modalStep=1;
+let formData={pkg:'standard',industry:'',bizName:'',contactName:'',email:'',phone:'',domain:'',langs:[],notes:'',cardNum:'',cardExp:'',cardCvc:'',cardName:''};
+
+// ── SOLUTIONS ──
+function renderSolutions(){
+  const s=solutions[activeSol];
+  document.getElementById('sol-tabs').innerHTML=solutions.map((x,i)=>`<div class="tab${i===activeSol?' active':''}" onclick="setSol(${i})">${x.label}</div>`).join('');
+  document.getElementById('sol-panel').innerHTML=`
+    <div class="sol-header"><h3>${s.title}</h3><p>${s.sub}</p></div>
+    <div class="sol-body">
+      <div class="sol-feats">${s.feats.map(f=>`<div class="sol-feat"><div class="fl">${f[0]}</div><div class="fv">${f[1]}</div></div>`).join('')}</div>
+      <div class="sol-quote">${s.quote}</div>
+    </div>`;
+}
+function setSol(i){activeSol=i;renderSolutions();}
+
+// ── FAQ ──
+function renderFaq(){
+  document.getElementById('faq-list').innerHTML=faqs.map((f,i)=>`
+    <div class="faq-item">
+      <button class="faq-btn" onclick="toggleFaq(${i})">
+        <span class="faq-q">${f[0]}</span>
+        <span class="faq-icon" id="fi${i}">+</span>
+      </button>
+      <div class="faq-a" id="fa${i}">${f[1]}</div>
+    </div>`).join('');
+}
+function toggleFaq(i){
+  const a=document.getElementById('fa'+i);
+  const ic=document.getElementById('fi'+i);
+  const open=a.classList.toggle('open');
+  ic.textContent=open?'−':'+';
+}
+
+// ── MODAL ──
+function openModal(pkg){
+  if(pkg)formData.pkg=pkg;
+  modalStep=1;
+  document.getElementById('overlay').classList.remove('hidden');
+  renderModal();
+}
+function closeModal(){document.getElementById('overlay').classList.add('hidden');}
+function handleOverlayClick(e){if(e.target===document.getElementById('overlay'))closeModal();}
+
+function scrollTo(id){document.getElementById(id)?.scrollIntoView({behavior:'smooth'});}
+
+const TOTAL_STEPS=5;
+
+function renderModal(){
+  const titles=['','Valitse toimialasi','Yrityksesi tiedot','Valitse paketti','Maksukortti',''];
+  document.getElementById('modal-title').textContent=modalStep<=5?'Aloita — vaihe '+modalStep+'/'+TOTAL_STEPS:'Valmis!';
+
+  let html='';
+
+  // progress bar
+  if(modalStep<=TOTAL_STEPS){
+    html+=`<div class="progress-bar">`;
+    for(let i=1;i<=TOTAL_STEPS;i++){
+      html+=`<div class="pb-step${i<modalStep?' done':i===modalStep?' active':''}"></div>`;
+    }
+    html+=`</div>`;
+  }
+
+  if(modalStep===1){
+    html+=`<div class="step-title">Millä alalla toimit?</div>`;
+    html+=`<div class="step-sub">Rakennamme sivustosi alan parhaiden käytäntöjen mukaan.</div>`;
+    html+=`<div class="industry-grid">`;
+    industries.forEach(ind=>{
+      html+=`<div class="industry-card${formData.industry===ind.id?' selected':''}" onclick="selectIndustry('${ind.id}')">
+        <div class="ic-icon">${ind.icon}</div>
+        <div class="ic-name">${ind.name}</div>
+        <div class="ic-sub">${ind.sub}</div>
+      </div>`;
+    });
+    html+=`</div>`;
+    html+=modalNav(false,!formData.industry,'Seuraava');
+
+  } else if(modalStep===2){
+    html+=`<div class="step-title">Yrityksen tiedot</div>`;
+    html+=`<div class="step-sub">Perustiedot jotka tarvitsemme sivustosi rakentamiseen.</div>`;
+    html+=`<div class="form-group"><label class="form-label">Yrityksen nimi *</label><input class="form-input" placeholder="Esim. Ravintola Lähde" value="${formData.bizName}" oninput="formData.bizName=this.value" /></div>`;
+    html+=`<div class="form-row">
+      <div class="form-group"><label class="form-label">Yhteyshenkilö *</label><input class="form-input" placeholder="Etunimi Sukunimi" value="${formData.contactName}" oninput="formData.contactName=this.value" /></div>
+      <div class="form-group"><label class="form-label">Puhelinnumero</label><input class="form-input" placeholder="+358 40 123 4567" value="${formData.phone}" oninput="formData.phone=this.value" /></div>
+    </div>`;
+    html+=`<div class="form-group"><label class="form-label">Sähköposti *</label><input class="form-input" type="email" placeholder="sinä@yritys.fi" value="${formData.email}" oninput="formData.email=this.value" /></div>`;
+    html+=`<div class="form-group"><label class="form-label">Nykyinen verkkosivuosoite (jos on)</label><input class="form-input" placeholder="www.yritys.fi" value="${formData.domain}" oninput="formData.domain=this.value" /></div>`;
+    html+=`<div class="form-group"><label class="form-label">Lisätietoja tai toiveita</label><textarea class="form-input" style="resize:vertical;min-height:72px;" placeholder="Värit, tyyli, erityistoiveet..." oninput="formData.notes=this.value">${formData.notes}</textarea></div>`;
+    const ok=formData.bizName&&formData.contactName&&formData.email;
+    html+=modalNav(true,!ok,'Seuraava');
+
+  } else if(modalStep===3){
+    html+=`<div class="step-title">Valitse pakettisi</div>`;
+    html+=`<div class="step-sub">Voit vaihtaa pakettia myöhemmin milloin tahansa.</div>`;
+    html+=`<div class="pkg-list">`;
+    Object.entries(packages).forEach(([key,p])=>{
+      html+=`<div class="pkg-card${formData.pkg===key?' selected':''}" onclick="formData.pkg='${key}';renderModal()">
+        <div class="pkg-card-inner">
+          <div class="pkg-radio${formData.pkg===key?' checked':''}"></div>
+          <div class="pkg-left"><div class="pkg-name">${p.name}</div><div class="pkg-desc">${p.desc}</div></div>
+        </div>
+        <div class="pkg-right"><div class="pkg-price">€${p.price}<span>/kk</span></div></div>
+      </div>`;
+    });
+    html+=`</div>`;
+    html+=modalNav(true,false,'Siirry maksuun');
+
+  } else if(modalStep===4){
+    const pkg=packages[formData.pkg];
+    html+=`<div class="step-title">Maksukortti</div>`;
+    html+=`<div class="step-sub">Veloitamme €${pkg.price}/kk sivuston käynnistymisestä alkaen. Ensimmäinen 14 päivää ilmaiseksi.</div>`;
+    // card preview
+    const cn=formData.cardNum||'•••• •••• •••• ••••';
+    const exp=formData.cardExp||'KK/VV';
+    const cname=formData.cardName||'NIMI KORTILLA';
+    html+=`<div class="card-preview">
+      <div class="card-chip"></div>
+      <div class="card-number-display">${cn}</div>
+      <div class="card-meta">
+        <div><div>Kortinhaltija</div><div class="card-meta-val">${cname.toUpperCase()}</div></div>
+        <div><div>Voimassa</div><div class="card-meta-val">${exp}</div></div>
+        <div><div>Skripti</div><div class="card-meta-val" style="color:#F97316">€${pkg.price}/kk</div></div>
+      </div>
+    </div>`;
+    html+=`<div class="form-group"><label class="form-label">Korttinumero</label>
+      <div class="card-input-wrapper">
+        <input class="form-input" placeholder="1234 5678 9012 3456" maxlength="19" value="${formData.cardNum}" oninput="formatCard(this)" style="padding-right:60px"/>
+        <span class="card-brand" id="card-brand"></span>
+      </div></div>`;
+    html+=`<div class="form-row">
+      <div class="form-group"><label class="form-label">Voimassaolo</label><input class="form-input" placeholder="KK/VV" maxlength="5" value="${formData.cardExp}" oninput="formatExp(this)" /></div>
+      <div class="form-group"><label class="form-label">CVC</label><input class="form-input" placeholder="123" maxlength="3" value="${formData.cardCvc}" oninput="formData.cardCvc=this.value;renderModal()" /></div>
+    </div>`;
+    html+=`<div class="form-group"><label class="form-label">Nimi kortilla</label><input class="form-input" placeholder="Matti Meikäläinen" value="${formData.cardName}" oninput="formData.cardName=this.value;renderModal()" /></div>`;
+    html+=`<div class="stripe-badge"><div class="stripe-lock"></div>Suojattu maksu · Stripe</div>`;
+    const cardOk=formData.cardNum.length>=19&&formData.cardExp.length===5&&formData.cardCvc.length>=3&&formData.cardName.length>2;
+    html+=modalNav(true,!cardOk,'Vahvista tilaus');
+
+  } else if(modalStep===5){
+    const pkg=packages[formData.pkg];
+    const ind=industries.find(x=>x.id===formData.industry);
+    html+=`<div class="success-icon">✓</div>`;
+    html+=`<div class="success-title">Tilaus vastaanotettu!</div>`;
+    html+=`<div class="success-sub">Hienoa, ${formData.contactName}! Olemme saaneet tilauksesi ja otamme sinuun yhteyttä 24 tunnin sisällä.</div>`;
+    html+=`<div class="summary-box">
+      <div class="summary-row"><span class="sk">Yritys</span><span class="sv">${formData.bizName}</span></div>
+      <div class="summary-row"><span class="sk">Toimiala</span><span class="sv">${ind?ind.name:'—'}</span></div>
+      <div class="summary-row"><span class="sk">Paketti</span><span class="sv">${pkg.name}</span></div>
+      <div class="summary-row"><span class="sk">Sähköposti</span><span class="sv">${formData.email}</span></div>
+      <div class="summary-row"><span class="sk">Kuukausimaksu</span><span class="sv">€${pkg.price}/kk</span></div>
+    </div>`;
+    html+=`<div class="success-steps">
+      <div class="success-step"><div class="ss-num">1</div><div class="ss-text">Lähetämme vahvistuksen sähköpostiisi</div></div>
+      <div class="success-step"><div class="ss-num">2</div><div class="ss-text">Otamme yhteyttä 24h sisällä</div></div>
+      <div class="success-step"><div class="ss-num">3</div><div class="ss-text">Sivustosi on valmis 14 päivässä</div></div>
+    </div>`;
+    html+=`<div style="margin-top:20px;text-align:center"><button class="btn-primary" onclick="closeModal()">Sulje</button></div>`;
+  }
+
+  document.getElementById('modal-body').innerHTML=html;
+}
+
+function modalNav(showBack,nextDisabled,nextLabel){
+  return `<div class="modal-nav">
+    ${showBack?`<button class="btn-back" onclick="prevStep()">← Takaisin</button>`:`<div></div>`}
+    <button class="btn-next" onclick="nextStep()" ${nextDisabled?'disabled':''}>${nextLabel} →</button>
+  </div>`;
+}
+
+function nextStep(){if(modalStep<TOTAL_STEPS){modalStep++;renderModal();}}
+function prevStep(){if(modalStep>1){modalStep--;renderModal();}}
+function selectIndustry(id){formData.industry=id;renderModal();}
+
+function formatCard(input){
+  let v=input.value.replace(/\D/g,'').substring(0,16);
+  v=v.replace(/(.{4})/g,'$1 ').trim();
+  input.value=v;
+  formData.cardNum=v;
+  const brand=document.getElementById('card-brand');
+  if(brand){
+    const d=v.replace(/\s/g,'');
+    if(d.startsWith('4'))brand.textContent='VISA';
+    else if(d.startsWith('5'))brand.textContent='MC';
+    else if(d.startsWith('3'))brand.textContent='AMEX';
+    else brand.textContent='';
+  }
+  // update card display without full re-render
+  const disp=document.querySelector('.card-number-display');
+  if(disp)disp.textContent=v||'•••• •••• •••• ••••';
+}
+
+function formatExp(input){
+  let v=input.value.replace(/\D/g,'');
+  if(v.length>=2)v=v.substring(0,2)+'/'+v.substring(2,4);
+  input.value=v;
+  formData.cardExp=v;
+  const disp=document.querySelectorAll('.card-meta-val')[1];
+  if(disp)disp.textContent=v||'KK/VV';
+}
+
+// init
+renderSolutions();
+renderFaq();
+</script>
