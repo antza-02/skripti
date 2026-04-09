@@ -12,14 +12,30 @@ Open `http://localhost:8080`.
 - Landing page: `http://localhost:8080/`
 - Client portal: `http://localhost:8080/portal`
 
-## Client portal
+## Client portal (investor demo)
 
-This repo now includes a styled client dashboard experience (built from a React + shadcn-based UI and shipped as static files under `/portal`):
+Source lives in `portal-src/` (Vite + React + shadcn). Static output is copied to `portal/` for deployment.
 
-- Dashboard at `/portal`
-- Site overview and analytics cards
-- Traffic chart and source table
-- Change request chat UI
+**Demo login**
+
+- Email: `demo@skripti.fi`
+- Password: `demo`
+
+**Routes (after login)**
+
+- `/portal` — dashboard (ROI story, timeline, KPIs, chat)
+- `/portal/requests` — request cards + chat
+- `/portal/analytics` — analytics + date range
+- `/portal/settings` — integration badges (mock “Connected”)
+
+**Rebuild static bundle** (after editing `portal-src/`):
+
+```bash
+cd portal-src && npm install && npm run build -- --base=/portal/
+rm -rf ../portal/assets && cp -R dist/* ../portal/
+```
+
+Then refresh meta in `portal/index.html` if the build changed hashed asset filenames.
 
 ## Form setup (Formspree)
 
