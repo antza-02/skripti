@@ -1,6 +1,18 @@
 {
   "cleanUrls": true,
   "trailingSlash": false,
+  "rewrites": [
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "clients.skripti.fi"
+        }
+      ],
+      "destination": "/portal"
+    }
+  ],
   "headers": [
     {
       "source": "/(.*).(js|css|svg)",

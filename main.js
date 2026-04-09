@@ -1,37 +1,162 @@
 const FORM_ENDPOINT = "https://formspree.io/f/xzdkqlgy";
+let currentLang = "fi";
 
-const solutions = [
-  { id: "ravintolat", label: "Ravintolat", title: "Ravintolat & kahvilat", sub: "Ruokalista, varaukset, tapahtumat", feats: [["Integraatio", "Tableonline-varaus"], ["Sisalto", "Ruokalista + kausipaivitykset"], ["Kielet", "FI, EN, SV vakiona"], ["Erikoisuus", "Tapahtumasivut"]], quote: "\"Uusi sesonkiruokalista paivitetty tunnissa - ennen se vei koko paivan.\"" },
-  { id: "kauneus", label: "Kauneus & hyvinvointi", title: "Kauneus & hyvinvointi", sub: "Ajanvaraukset, palvelut, henkilokunta", feats: [["Integraatio", "Timma / Booklr ajanvaraus"], ["Sisalto", "Palveluhinnasto + galleria"], ["Kielet", "FI + EN"], ["Erikoisuus", "Ennen-jalkeen-galleria"]], quote: "\"Asiakkaat varaavat ajan verkossa - ei enaa puheluja auki ollessa.\"" },
-  { id: "rakentaminen", label: "Rakentaminen", title: "Rakentaminen & remontit", sub: "Referenssit, tarjouspyynto, yhteystiedot", feats: [["Integraatio", "Tarjouspyyntolomake"], ["Sisalto", "Referenssikohteet + kuvat"], ["Kielet", "FI + EN"], ["Erikoisuus", "Projektisalkku"]], quote: "\"Asiakkaat nakevat toimme ennen kuin soittavat - laadukkaammat liidit.\"" },
-  { id: "ammattipalvelut", label: "Ammattipalvelut", title: "Ammattipalvelut", sub: "Asianajajat, tilitoimistot, konsultit", feats: [["Integraatio", "Calendly-varaukset"], ["Sisalto", "Palvelut + tiimi + blogi"], ["Kielet", "FI + EN + SV"], ["Erikoisuus", "Asiantuntijaprofiilit"]], quote: "\"Sivusto rakentaa luottamusta ennen ensimmaista tapaamista.\"" },
-  { id: "kauppa", label: "Kauppa & retail", title: "Vahittaiskauppa", sub: "Tuotteet, aukioloajat, sijainti", feats: [["Integraatio", "Tuoteluettelo / verkkokauppa"], ["Sisalto", "Tuotteet + tarjoukset"], ["Kielet", "FI + EN"], ["Erikoisuus", "Sesonkikampanjat"]], quote: "\"Tuotteet esilla verkossa - asiakkaat tietavat mita loytavat.\"" },
-  { id: "liikunta", label: "Liikunta & urheilu", title: "Liikunta & urheilu", sub: "Tuntiohjelma, jasenyydet, varaukset", feats: [["Integraatio", "Eazybreak / tuntivaraukset"], ["Sisalto", "Tuntiohjelma + valmentajat"], ["Kielet", "FI + EN"], ["Erikoisuus", "Jasenyyssivut"]], quote: "\"Uudet asiakkaat loytavat meidat Googlesta - ei enaa pelkka some.\"" }
-];
-
-const faqs = [
-  ["Mita tarkoittaa \"rajattomat paivitykset\"?", "Kaikki sisaltomuutokset - uudet palvelut, hinnaston paivitykset, kuvat, tekstit, aukioloajat - kuuluvat hintaan. Lahetat pyynnon, me toteutamme."],
-  ["Mita jos haluan lopettaa?", "Peruuta milloin tahansa ilman irtisanomismaksuja. Domain siirtyy sinulle ja saat kaikki tiedostot haltuusi."],
-  ["Onko hosting mukana hinnassa?", "Kyllä - hosting, SSL-sertifikaatti, domain (ensimmainen vuosi) ja Cloudflare-tietoturva sisaltyvat kaikkiin paketteihin."],
-  ["Miten toimialaintegraatiot toimivat?", "Ravintolalle rakennamme varausjarjestelman, kauneushoitolalle ajanvarauksen, verkkokaupalle tuoteluettelon - ilman lisahintaa Standard- ja Pro-paketeissa."],
-  ["Kuinka nopeasti sivusto on valmis?", "14 paivassa ensimmaisesta yhteydenotosta. Pro-asiakkaille pystymme toimittamaan nopeammin."]
-];
-
-const packages = {
-  starter: { name: "Starter", price: 99, desc: "5-sivuinen sivusto, FI+EN, 2 paivitysta/kk" },
-  standard: { name: "Standard", price: 169, desc: "8-sivuinen sivusto, FI+EN+SV, rajattomat paivitykset + integraatiot" },
-  pro: { name: "Pro", price: 269, desc: "Rajattomat sivut, saman paivan paivitys, SEO + Google-mainokset" }
+const copy = {
+  fi: {
+    htmlLang: "fi",
+    nav: { solutions: "Ratkaisut", pricing: "Hinnat", cta: "Aloita nyt" },
+    hero: {
+      badge: "Verkkosivut kuukausimaksulla - kaikki mukana",
+      heading: "Yrityksesi ansaitsee<br>verkkosivut jotka<br><em>tekevät töitä.</em>",
+      text: "Ammattimaiset verkkosivut, ylläpito ja jatkuvat päivitykset yhdellä kiinteällä kuukausimaksulla. Ei toimistolaskuja. Ei yllätyksiä.",
+      cta: "Aloita - sivusto valmis 14 päivässä",
+      secondary: "Katso esimerkit"
+    },
+    sections: {
+      howLabel: "Miten se toimii",
+      howHeading: "Kolme vaihetta.<br>Sitten unohda se.",
+      solutionsLabel: "Ratkaisut",
+      solutionsHeading: "Tehty juuri sinun alallesi.",
+      solutionsBody: "Jokaisella alalla on omat tarpeensa. Skripti tunnistaa ne.",
+      pricingLabel: "Hinnoittelu",
+      pricingHeading: "Selkeä hinta.<br>Ei piilokuluja.",
+      faqLabel: "UKK",
+      faqHeading: "Usein kysyttyä.",
+      finalHeading: "Valmis aloittamaan?<br><em>Sivusto valmiina 14 päivässä.</em>",
+      finalText: "Liity satojen suomalaisten yritysten joukkoon joilla on verkkosivut jotka toimivat.",
+      finalButton: "Aloita nyt - valitse pakettisi",
+      footer: "skripti.fi - Helsinki, Suomi"
+    },
+    modal: {
+      stepOf: "Aloita - vaihe",
+      done: "Valmis!",
+      industryTitle: "Millä alalla toimit?",
+      industrySub: "Rakennamme sivustosi alan parhaiden käytäntöjen mukaan.",
+      businessTitle: "Yrityksen tiedot",
+      businessSub: "Perustiedot joita tarvitsemme sivustosi rakentamiseen.",
+      packageTitle: "Valitse pakettisi",
+      packageSub: "Voit vaihtaa pakettia myöhemmin milloin tahansa.",
+      submitTitle: "Lähetä yhteydenotto",
+      submitSub: "Tallennamme tietosi ja olemme yhteydessä 24 tunnin sisällä.",
+      successTitle: "Kiitos yhteydenotosta!",
+      sending: "Lähetetään...",
+      send: "Lähetä yhteydenotto",
+      failed: "Lähetys epäonnistui. Yritä uudelleen hetken kuluttua.",
+      next: "Seuraava",
+      back: "Takaisin",
+      close: "Sulje"
+    },
+    labels: {
+      company: "Yrityksen nimi *",
+      contact: "Yhteyshenkilö *",
+      email: "Sähköposti *",
+      phone: "Puhelinnumero",
+      website: "Nykyinen verkkosivuosoite (jos on)",
+      notes: "Lisätietoja tai toiveita"
+    }
+  },
+  en: {
+    htmlLang: "en",
+    nav: { solutions: "Solutions", pricing: "Pricing", cta: "Get started" },
+    hero: {
+      badge: "Websites on a monthly plan - all included",
+      heading: "Your business deserves<br>a website that<br><em>does the work.</em>",
+      text: "Professional websites, maintenance, and continuous updates with one fixed monthly fee. No agency invoices. No surprises.",
+      cta: "Get started - website ready in 14 days",
+      secondary: "See examples"
+    },
+    sections: {
+      howLabel: "How it works",
+      howHeading: "Three steps.<br>Then forget about it.",
+      solutionsLabel: "Solutions",
+      solutionsHeading: "Built for your industry.",
+      solutionsBody: "Every industry has different needs. Skripti adapts to them.",
+      pricingLabel: "Pricing",
+      pricingHeading: "Clear pricing.<br>No hidden fees.",
+      faqLabel: "FAQ",
+      faqHeading: "Frequently asked questions.",
+      finalHeading: "Ready to start?<br><em>Your website can be live in 14 days.</em>",
+      finalText: "Join hundreds of Finnish businesses already using websites that work.",
+      finalButton: "Get started - choose your package",
+      footer: "skripti.fi - Helsinki, Finland"
+    },
+    modal: {
+      stepOf: "Start - step",
+      done: "Done!",
+      industryTitle: "What industry are you in?",
+      industrySub: "We build your website using best practices for your industry.",
+      businessTitle: "Business details",
+      businessSub: "Basic information we need to build your website.",
+      packageTitle: "Choose your package",
+      packageSub: "You can change package later anytime.",
+      submitTitle: "Send contact request",
+      submitSub: "We save your details and contact you within 24 hours.",
+      successTitle: "Thanks for your request!",
+      sending: "Sending...",
+      send: "Send request",
+      failed: "Sending failed. Please try again shortly.",
+      next: "Next",
+      back: "Back",
+      close: "Close"
+    },
+    labels: {
+      company: "Company name *",
+      contact: "Contact person *",
+      email: "Email *",
+      phone: "Phone number",
+      website: "Current website (if any)",
+      notes: "Additional notes"
+    }
+  }
 };
 
-const industries = [
-  { id: "ravintolat", icon: "🍽", name: "Ravintola / kahvila", sub: "Ruokalista, varaukset" },
-  { id: "kauneus", icon: "✂", name: "Kauneus & hyvinvointi", sub: "Ajanvaraukset, palvelut" },
-  { id: "rakentaminen", icon: "🔧", name: "Rakennus & remontit", sub: "Referenssit, tarjoukset" },
-  { id: "ammattipalvelut", icon: "💼", name: "Ammattipalvelut", sub: "Konsultointi, asiantuntija" },
-  { id: "kauppa", icon: "🛍", name: "Kauppa & retail", sub: "Tuotteet, myymala" },
-  { id: "liikunta", icon: "⚡", name: "Liikunta & urheilu", sub: "Tunnit, jasenyydet" },
-  { id: "muu", icon: "✦", name: "Muu toimiala", sub: "Kaikki muut yritykset" }
-];
+const solutionsByLang = {
+  fi: [
+    { id: "ravintolat", label: "Ravintolat", title: "Ravintolat & kahvilat", sub: "Ruokalista, varaukset, tapahtumat", feats: [["Integraatio", "TableOnline-varaus"], ["Sisältö", "Ruokalista + kausipäivitykset"], ["Kielet", "FI, EN, SV vakiona"], ["Erikoisuus", "Tapahtumasivut"]], quote: "\"Uusi sesonkiruokalista päivitetty tunnissa - ennen se vei koko päivän.\"" },
+    { id: "kauneus", label: "Kauneus", title: "Kauneus & hyvinvointi", sub: "Ajanvaraukset, palvelut, henkilökunta", feats: [["Integraatio", "Timma / Booklr"], ["Sisältö", "Palveluhinnasto + galleria"], ["Kielet", "FI + EN"], ["Erikoisuus", "Ennen-jälkeen-galleria"]], quote: "\"Asiakkaat varaavat ajan verkossa - ei enää puhelurumbaa.\"" }
+  ],
+  en: [
+    { id: "restaurants", label: "Restaurants", title: "Restaurants & Cafes", sub: "Menus, bookings, events", feats: [["Integration", "TableOnline booking"], ["Content", "Menus + seasonal updates"], ["Languages", "FI, EN, SV by default"], ["Special", "Event pages"]], quote: "\"Our seasonal menu now updates in an hour, not a full day.\"" },
+    { id: "beauty", label: "Beauty", title: "Beauty & Wellness", sub: "Bookings, services, staff", feats: [["Integration", "Timma / Booklr"], ["Content", "Service pricing + gallery"], ["Languages", "FI + EN"], ["Special", "Before/after gallery"]], quote: "\"Customers book online now - no more phone overload.\"" }
+  ]
+};
+
+const faqsByLang = {
+  fi: [
+    ["Mitä tarkoittaa \"rajattomat päivitykset\"?", "Kaikki sisältömuutokset - uudet palvelut, hinnastot, kuvat, tekstit - kuuluvat hintaan."],
+    ["Onko hosting mukana hinnassa?", "Kyllä. Hosting, SSL ja tekninen ylläpito sisältyvät kaikkiin paketteihin."]
+  ],
+  en: [
+    ["What do \"unlimited updates\" include?", "All content updates - new services, pricing, images, and text - are included in your monthly plan."],
+    ["Is hosting included?", "Yes. Hosting, SSL, and technical maintenance are included in all packages."]
+  ]
+};
+
+const packagesByLang = {
+  fi: {
+    starter: { name: "Starter", price: 99, desc: "5-sivuinen sivusto, FI+EN, 2 päivitystä/kk" },
+    standard: { name: "Standard", price: 169, desc: "8-sivuinen sivusto, FI+EN+SV, rajattomat päivitykset" },
+    pro: { name: "Pro", price: 269, desc: "Rajattomat sivut, nopea päivitys, SEO + Google-mainokset" }
+  },
+  en: {
+    starter: { name: "Starter", price: 99, desc: "5-page website, FI+EN, 2 updates/month" },
+    standard: { name: "Standard", price: 169, desc: "8-page website, FI+EN+SV, unlimited updates" },
+    pro: { name: "Pro", price: 269, desc: "Unlimited pages, fast updates, SEO + Google Ads" }
+  }
+};
+
+const industriesByLang = {
+  fi: [
+    { id: "ravintolat", icon: "🍽", name: "Ravintola / kahvila", sub: "Ruokalista, varaukset" },
+    { id: "kauneus", icon: "✂", name: "Kauneus & hyvinvointi", sub: "Ajanvaraukset, palvelut" },
+    { id: "muu", icon: "✦", name: "Muu toimiala", sub: "Kaikki muut yritykset" }
+  ],
+  en: [
+    { id: "restaurants", icon: "🍽", name: "Restaurant / cafe", sub: "Menus, bookings" },
+    { id: "beauty", icon: "✂", name: "Beauty & wellness", sub: "Bookings, services" },
+    { id: "other", icon: "✦", name: "Other industry", sub: "All other businesses" }
+  ]
+};
 
 let activeSol = 0;
 let modalStep = 1;
@@ -41,6 +166,7 @@ let lastActiveElement = null;
 let formData = { pkg: "standard", industry: "", bizName: "", contactName: "", email: "", phone: "", domain: "", notes: "" };
 
 function renderSolutions() {
+  const solutions = solutionsByLang[currentLang];
   const s = solutions[activeSol];
   document.getElementById("sol-tabs").innerHTML = solutions.map((x, i) => `<button type="button" class="tab${i === activeSol ? " active" : ""}" onclick="setSol(${i})">${x.label}</button>`).join("");
   document.getElementById("sol-panel").innerHTML = `
@@ -57,6 +183,7 @@ function setSol(i) {
 }
 
 function renderFaq() {
+  const faqs = faqsByLang[currentLang];
   document.getElementById("faq-list").innerHTML = faqs.map((f, i) => `
     <div class="faq-item">
       <button class="faq-btn" type="button" aria-expanded="false" aria-controls="fa${i}" onclick="toggleFaq(${i})">
@@ -105,7 +232,10 @@ function scrollToSection(id) {
 }
 
 function renderModal() {
-  document.getElementById("modal-title").textContent = modalStep <= TOTAL_STEPS ? `Aloita - vaihe ${modalStep}/${TOTAL_STEPS}` : "Valmis!";
+  const t = copy[currentLang];
+  const packages = packagesByLang[currentLang];
+  const industries = industriesByLang[currentLang];
+  document.getElementById("modal-title").textContent = modalStep <= TOTAL_STEPS ? `${t.modal.stepOf} ${modalStep}/${TOTAL_STEPS}` : t.modal.done;
   let html = "";
 
   if (modalStep <= TOTAL_STEPS) {
@@ -117,8 +247,8 @@ function renderModal() {
   }
 
   if (modalStep === 1) {
-    html += "<div class=\"step-title\">Milla alalla toimit?</div>";
-    html += "<div class=\"step-sub\">Rakennamme sivustosi alan parhaiden kaytantojen mukaan.</div>";
+    html += `<div class="step-title">${t.modal.industryTitle}</div>`;
+    html += `<div class="step-sub">${t.modal.industrySub}</div>`;
     html += "<div class=\"industry-grid\">";
     industries.forEach((ind) => {
       html += `<button type="button" class="industry-card${formData.industry === ind.id ? " selected" : ""}" onclick="selectIndustry('${ind.id}')">
@@ -128,23 +258,23 @@ function renderModal() {
       </button>`;
     });
     html += "</div>";
-    html += modalNav(false, !formData.industry, "Seuraava");
+    html += modalNav(false, !formData.industry, t.modal.next);
   } else if (modalStep === 2) {
-    html += "<div class=\"step-title\">Yrityksen tiedot</div>";
-    html += "<div class=\"step-sub\">Perustiedot joita tarvitsemme sivustosi rakentamiseen.</div>";
-    html += `<div class="form-group"><label class="form-label" for="biz-name">Yrityksen nimi *</label><input id="biz-name" class="form-input" placeholder="Esim. Ravintola Lahde" value="${escapeAttr(formData.bizName)}" oninput="formData.bizName=this.value" /></div>`;
+    html += `<div class="step-title">${t.modal.businessTitle}</div>`;
+    html += `<div class="step-sub">${t.modal.businessSub}</div>`;
+    html += `<div class="form-group"><label class="form-label" for="biz-name">${t.labels.company}</label><input id="biz-name" class="form-input" placeholder="Acme Oy" value="${escapeAttr(formData.bizName)}" oninput="formData.bizName=this.value" /></div>`;
     html += `<div class="form-row">
-      <div class="form-group"><label class="form-label" for="contact-name">Yhteyshenkilo *</label><input id="contact-name" class="form-input" placeholder="Etunimi Sukunimi" value="${escapeAttr(formData.contactName)}" oninput="formData.contactName=this.value" /></div>
-      <div class="form-group"><label class="form-label" for="phone">Puhelinnumero</label><input id="phone" class="form-input" placeholder="+358 40 123 4567" value="${escapeAttr(formData.phone)}" oninput="formData.phone=this.value" /></div>
+      <div class="form-group"><label class="form-label" for="contact-name">${t.labels.contact}</label><input id="contact-name" class="form-input" placeholder="Matti Meikäläinen" value="${escapeAttr(formData.contactName)}" oninput="formData.contactName=this.value" /></div>
+      <div class="form-group"><label class="form-label" for="phone">${t.labels.phone}</label><input id="phone" class="form-input" placeholder="+358 40 123 4567" value="${escapeAttr(formData.phone)}" oninput="formData.phone=this.value" /></div>
     </div>`;
-    html += `<div class="form-group"><label class="form-label" for="email">Sahkoposti *</label><input id="email" class="form-input" type="email" placeholder="sina@yritys.fi" value="${escapeAttr(formData.email)}" oninput="formData.email=this.value" /></div>`;
-    html += `<div class="form-group"><label class="form-label" for="domain">Nykyinen verkkosivuosoite (jos on)</label><input id="domain" class="form-input" placeholder="www.yritys.fi" value="${escapeAttr(formData.domain)}" oninput="formData.domain=this.value" /></div>`;
-    html += `<div class="form-group"><label class="form-label" for="notes">Lisatietoja tai toiveita</label><textarea id="notes" class="form-input" style="resize:vertical;min-height:72px;" placeholder="Varit, tyyli, erityistoiveet..." oninput="formData.notes=this.value">${escapeHtml(formData.notes)}</textarea></div>`;
+    html += `<div class="form-group"><label class="form-label" for="email">${t.labels.email}</label><input id="email" class="form-input" type="email" placeholder="you@company.com" value="${escapeAttr(formData.email)}" oninput="formData.email=this.value" /></div>`;
+    html += `<div class="form-group"><label class="form-label" for="domain">${t.labels.website}</label><input id="domain" class="form-input" placeholder="www.company.com" value="${escapeAttr(formData.domain)}" oninput="formData.domain=this.value" /></div>`;
+    html += `<div class="form-group"><label class="form-label" for="notes">${t.labels.notes}</label><textarea id="notes" class="form-input" style="resize:vertical;min-height:72px;" placeholder="Tell us your goals and style..." oninput="formData.notes=this.value">${escapeHtml(formData.notes)}</textarea></div>`;
     const ok = formData.bizName && formData.contactName && formData.email;
-    html += modalNav(true, !ok, "Seuraava");
+    html += modalNav(true, !ok, t.modal.next);
   } else if (modalStep === 3) {
-    html += "<div class=\"step-title\">Valitse pakettisi</div>";
-    html += "<div class=\"step-sub\">Voit vaihtaa pakettia myohemmin milloin tahansa.</div>";
+    html += `<div class="step-title">${t.modal.packageTitle}</div>`;
+    html += `<div class="step-sub">${t.modal.packageSub}</div>`;
     html += "<div class=\"pkg-list\">";
     Object.entries(packages).forEach(([key, p]) => {
       html += `<button type="button" class="pkg-card${formData.pkg === key ? " selected" : ""}" onclick="formData.pkg='${key}';renderModal()">
@@ -156,12 +286,12 @@ function renderModal() {
       </button>`;
     });
     html += "</div>";
-    html += modalNav(true, false, "Siirry vahvistukseen");
+    html += modalNav(true, false, t.modal.next);
   } else if (modalStep === 4) {
     const pkg = packages[formData.pkg];
     const ind = industries.find((x) => x.id === formData.industry);
-    html += "<div class=\"step-title\">Laheta yhteydenotto</div>";
-    html += "<div class=\"step-sub\">Tallennamme tietosi ja olemme yhteydessa 24 tunnin sisalla.</div>";
+    html += `<div class="step-title">${t.modal.submitTitle}</div>`;
+    html += `<div class="step-sub">${t.modal.submitSub}</div>`;
     html += `<div class="summary-box">
       <div class="summary-row"><span class="sk">Yritys</span><span class="sv">${escapeHtml(formData.bizName)}</span></div>
       <div class="summary-row"><span class="sk">Toimiala</span><span class="sv">${ind ? ind.name : "-"}</span></div>
@@ -171,23 +301,24 @@ function renderModal() {
     </div>`;
     html += `<p id="submit-status" class="step-sub" aria-live="polite"></p>`;
     html += `<div class="modal-nav">
-      <button class="btn-back" type="button" onclick="prevStep()">← Takaisin</button>
-      <button class="btn-next" id="submit-btn" type="button" onclick="submitLead()" ${isSubmitting ? "disabled" : ""}>${isSubmitting ? "Lahetetaan..." : "Laheta yhteydenotto →"}</button>
+      <button class="btn-back" type="button" onclick="prevStep()">← ${t.modal.back}</button>
+      <button class="btn-next" id="submit-btn" type="button" onclick="submitLead()" ${isSubmitting ? "disabled" : ""}>${isSubmitting ? t.modal.sending : `${t.modal.send} →`}</button>
     </div>`;
   } else if (modalStep === 5) {
     const pkg = packages[formData.pkg];
     html += "<div class=\"success-icon\">✓</div>";
-    html += "<div class=\"success-title\">Kiitos yhteydenotosta!</div>";
-    html += `<div class=\"success-sub\">Hienoa, ${escapeHtml(formData.contactName)}! Olemme saaneet pyyntosi pakettiin ${pkg.name} ja otamme yhteytta 24 tunnin sisalla.</div>`;
-    html += "<div style=\"margin-top:20px;text-align:center\"><button class=\"btn-primary\" type=\"button\" onclick=\"closeModal()\">Sulje</button></div>";
+    html += `<div class="success-title">${t.modal.successTitle}</div>`;
+    html += `<div class="success-sub">${escapeHtml(formData.contactName)}, ${t.modal.submitSub}</div>`;
+    html += `<div style="margin-top:20px;text-align:center"><button class="btn-primary" type="button" onclick="closeModal()">${t.modal.close}</button></div>`;
   }
 
   document.getElementById("modal-body").innerHTML = html;
 }
 
 function modalNav(showBack, nextDisabled, nextLabel) {
+  const t = copy[currentLang];
   return `<div class="modal-nav">
-    ${showBack ? "<button class=\"btn-back\" type=\"button\" onclick=\"prevStep()\">← Takaisin</button>" : "<div></div>"}
+    ${showBack ? `<button class="btn-back" type="button" onclick="prevStep()">← ${t.modal.back}</button>` : "<div></div>"}
     <button class="btn-next" type="button" onclick="nextStep()" ${nextDisabled ? "disabled" : ""}>${nextLabel} →</button>
   </div>`;
 }
@@ -212,11 +343,12 @@ function selectIndustry(id) {
 }
 
 async function submitLead() {
+  const t = copy[currentLang];
   if (isSubmitting) return;
   isSubmitting = true;
   renderModal();
   const status = document.getElementById("submit-status");
-  if (status) status.textContent = "Lahetetaan...";
+  if (status) status.textContent = t.modal.sending;
 
   const payload = {
     company: formData.bizName,
@@ -240,7 +372,7 @@ async function submitLead() {
     modalStep = 5;
     renderModal();
   } catch (err) {
-    if (status) status.textContent = "Lahetys epaonnistui. Yrita uudelleen hetken kuluttua.";
+    if (status) status.textContent = t.modal.failed;
   } finally {
     isSubmitting = false;
     if (modalStep === 4) renderModal();
@@ -299,7 +431,44 @@ window.selectIndustry = selectIndustry;
 window.nextStep = nextStep;
 window.prevStep = prevStep;
 window.submitLead = submitLead;
+window.setLanguage = setLanguage;
+
+function applyStaticCopy() {
+  const t = copy[currentLang];
+  document.documentElement.lang = t.htmlLang;
+  document.getElementById("nav-solutions").textContent = t.nav.solutions;
+  document.getElementById("nav-pricing").textContent = t.nav.pricing;
+  document.getElementById("nav-cta").textContent = t.nav.cta;
+  document.getElementById("hero-badge").textContent = t.hero.badge;
+  document.getElementById("hero-heading").innerHTML = t.hero.heading;
+  document.getElementById("hero-text").textContent = t.hero.text;
+  document.getElementById("hero-cta").textContent = t.hero.cta;
+  document.getElementById("hero-secondary").textContent = t.hero.secondary;
+  document.getElementById("how-label").textContent = t.sections.howLabel;
+  document.getElementById("how-heading").innerHTML = t.sections.howHeading;
+  document.getElementById("solutions-label").textContent = t.sections.solutionsLabel;
+  document.getElementById("solutions-heading").textContent = t.sections.solutionsHeading;
+  document.getElementById("solutions-body").textContent = t.sections.solutionsBody;
+  document.getElementById("pricing-label").textContent = t.sections.pricingLabel;
+  document.getElementById("pricing-heading").innerHTML = t.sections.pricingHeading;
+  document.getElementById("faq-label").textContent = t.sections.faqLabel;
+  document.getElementById("faq-heading").textContent = t.sections.faqHeading;
+  document.getElementById("cta-heading").innerHTML = t.sections.finalHeading;
+  document.getElementById("final-cta-text").textContent = t.sections.finalText;
+  document.getElementById("final-cta-button").textContent = t.sections.finalButton;
+  document.getElementById("footer-text").textContent = t.sections.footer;
+}
+
+function setLanguage(lang) {
+  currentLang = lang === "en" ? "en" : "fi";
+  document.getElementById("lang-fi").classList.toggle("active", currentLang === "fi");
+  document.getElementById("lang-en").classList.toggle("active", currentLang === "en");
+  activeSol = 0;
+  applyStaticCopy();
+  renderSolutions();
+  renderFaq();
+  if (!document.getElementById("overlay").classList.contains("hidden")) renderModal();
+}
 
 document.addEventListener("keydown", handleKeydown);
-renderSolutions();
-renderFaq();
+setLanguage("fi");

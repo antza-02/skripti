@@ -9,6 +9,22 @@ python3 -m http.server 8080
 ```
 
 Open `http://localhost:8080`.
+- Landing page: `http://localhost:8080/`
+- Client portal mockup: `http://localhost:8080/portal`
+
+## Client portal mockup
+
+This repo now includes a mock client dashboard experience:
+
+- Login + dashboard at `/portal`
+- Mock metrics cards and traffic chart
+- Mock "change request chat" that appends client/team messages
+- Mock auth using localStorage (no backend)
+
+Mock credentials:
+
+- Email: `client@northstar.fi`
+- Password: `demo123`
 
 ## Form setup (Formspree)
 
@@ -26,6 +42,7 @@ Open `http://localhost:8080`.
 4. Output directory: `.`.
 5. Deploy and verify:
    - Page loads
+   - `https://clients.skripti.fi` routes to `/portal` (rewrite in `vercel.json`)
    - Modal opens/closes with keyboard and overlay
    - Lead submission returns success
 
@@ -35,6 +52,7 @@ Open `http://localhost:8080`.
 2. Build command: none.
 3. Publish directory: `.`.
 4. Deploy and run the same checks as above.
+5. Add subdomain DNS (`clients`) and verify Netlify host-based rewrite routes `/` to `/portal`.
 
 ## Domain + HTTPS checklist
 

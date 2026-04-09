@@ -1,6 +1,12 @@
 [build]
   publish = "."
 
+[[redirects]]
+  from = "/"
+  to = "/portal"
+  status = 200
+  conditions = {Host = ["clients.skripti.fi"]}
+
 [[headers]]
   for = "/*.js"
   [headers.values]

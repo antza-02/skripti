@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Skripti Client Portal (Mockup)</title>
+  <meta name="description" content="Mock client portal with login, site metrics, and change request chat.">
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./portal.css">
+  <script defer src="./portal.js"></script>
+</head>
+<body>
+  <div class="portal-shell">
+    <header class="topbar">
+      <div class="brand">Skripti<span>.</span> Client Portal</div>
+      <div class="badge">Mockup</div>
+    </header>
+
+    <main class="content">
+      <section id="login-view" class="card login-card">
+        <h1>Client Login</h1>
+        <p>Sign in to view your site, analytics, and submit change requests.</p>
+        <form id="login-form" class="form">
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" placeholder="client@northstar.fi" required>
+
+          <label for="password">Password</label>
+          <input id="password" name="password" type="password" placeholder="••••••••" required>
+
+          <button type="submit">Sign in</button>
+          <p class="hint">Mock login: <code>client@northstar.fi</code> / <code>demo123</code></p>
+          <p id="login-error" class="error" aria-live="polite"></p>
+        </form>
+      </section>
+
+      <section id="dashboard-view" class="dashboard hidden">
+        <div class="dashboard-header">
+          <div>
+            <h2>Welcome, Northstar Clinic</h2>
+            <p>Overview of your website and performance.</p>
+          </div>
+          <button id="logout-btn" class="ghost-btn" type="button">Log out</button>
+        </div>
+
+        <div class="grid">
+          <article class="card site-card">
+            <h3>Your site</h3>
+            <p class="site-url"><a href="#" aria-disabled="true">https://northstarclinic.fi</a></p>
+            <div class="meta">
+              <span>Status: <strong>Live</strong></span>
+              <span>Last update: <strong>Today 10:45</strong></span>
+            </div>
+          </article>
+
+          <article class="card stats-card">
+            <h3>Key stats (last 30 days)</h3>
+            <div class="stats-grid">
+              <div><span>Users</span><strong>12,480</strong></div>
+              <div><span>Sessions</span><strong>16,920</strong></div>
+              <div><span>Conversions</span><strong>412</strong></div>
+              <div><span>Bounce rate</span><strong>34.2%</strong></div>
+            </div>
+          </article>
+
+          <article class="card chart-card">
+            <h3>Traffic trend</h3>
+            <div class="bars" aria-label="Mock traffic bars">
+              <div style="--h:32%"></div>
+              <div style="--h:48%"></div>
+              <div style="--h:40%"></div>
+              <div style="--h:55%"></div>
+              <div style="--h:62%"></div>
+              <div style="--h:58%"></div>
+              <div style="--h:72%"></div>
+              <div style="--h:66%"></div>
+              <div style="--h:78%"></div>
+              <div style="--h:74%"></div>
+              <div style="--h:86%"></div>
+              <div style="--h:81%"></div>
+            </div>
+          </article>
+
+          <article class="card sources-card">
+            <h3>Top traffic sources</h3>
+            <table>
+              <thead>
+                <tr><th>Source</th><th>Users</th><th>Share</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Organic Search</td><td>6,120</td><td>49%</td></tr>
+                <tr><td>Direct</td><td>3,170</td><td>25%</td></tr>
+                <tr><td>Social</td><td>1,950</td><td>16%</td></tr>
+                <tr><td>Referral</td><td>1,240</td><td>10%</td></tr>
+              </tbody>
+            </table>
+          </article>
+
+          <article class="card chat-card">
+            <h3>Change requests chat</h3>
+            <div id="chat-thread" class="chat-thread"></div>
+            <form id="chat-form" class="chat-form">
+              <input id="chat-input" type="text" placeholder="Describe the change you need..." required>
+              <button type="submit">Send</button>
+            </form>
+          </article>
+        </div>
+      </section>
+    </main>
+  </div>
+</body>
+</html>

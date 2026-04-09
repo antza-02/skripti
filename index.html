@@ -4,16 +4,16 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Skripti - Verkkosivut kuukausimaksulla</title>
-  <meta name="description" content="Ammattimaiset verkkosivut, yllapito ja jatkuvat paivitykset yhdella kiintealla kuukausimaksulla ilman yllatyksia.">
+  <meta name="description" content="Ammattimaiset verkkosivut, ylläpito ja jatkuvat päivitykset yhdellä kiinteällä kuukausimaksulla ilman yllätyksiä.">
   <meta name="robots" content="index,follow">
   <meta property="og:type" content="website">
   <meta property="og:title" content="Skripti - Verkkosivut kuukausimaksulla">
-  <meta property="og:description" content="Sivusto valmiina 14 paivassa. Hosting, yllapito ja paivitykset samalla kuukausihinnalla.">
+  <meta property="og:description" content="Sivusto valmiina 14 päivässä. Hosting, ylläpito ja päivitykset samalla kuukausihinnalla.">
   <meta property="og:image" content="/assets/social-preview.svg">
   <meta property="og:url" content="https://project-7dx98.vercel.app/">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Skripti - Verkkosivut kuukausimaksulla">
-  <meta name="twitter:description" content="Sivusto valmiina 14 paivassa. Hosting, yllapito ja paivitykset samalla kuukausihinnalla.">
+  <meta name="twitter:description" content="Sivusto valmiina 14 päivässä. Hosting, ylläpito ja päivitykset samalla kuukausihinnalla.">
   <meta name="twitter:image" content="/assets/social-preview.svg">
   <link rel="canonical" href="https://project-7dx98.vercel.app/">
   <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
@@ -22,35 +22,39 @@
 </head>
 <body>
   <div class="page" id="app">
-    <header class="nav" aria-label="Paavalikko">
+    <header class="nav" aria-label="Päävalikko">
       <div class="nav-logo">Skripti<span>.</span></div>
       <div class="nav-links">
-        <button class="nav-link" type="button" onclick="scrollToSection('solutions')">Ratkaisut</button>
-        <button class="nav-link" type="button" onclick="scrollToSection('pricing')">Hinnat</button>
+        <button class="nav-link" id="nav-solutions" type="button" onclick="scrollToSection('solutions')">Ratkaisut</button>
+        <button class="nav-link" id="nav-pricing" type="button" onclick="scrollToSection('pricing')">Hinnat</button>
         <button class="nav-link" type="button" onclick="scrollToSection('faq')">UKK</button>
-        <button class="nav-cta" type="button" onclick="openModal()">Aloita nyt</button>
+        <button class="nav-cta" id="nav-cta" type="button" onclick="openModal()">Aloita nyt</button>
+        <div class="lang-toggle" aria-label="Language selector">
+          <button id="lang-fi" class="lang-btn active" type="button" onclick="setLanguage('fi')">FI</button>
+          <button id="lang-en" class="lang-btn" type="button" onclick="setLanguage('en')">EN</button>
+        </div>
       </div>
     </header>
 
     <main>
       <section class="hero" aria-labelledby="hero-heading">
-        <div class="hero-badge">Verkkosivut kuukausimaksulla - kaikki mukana</div>
-        <h1 id="hero-heading">Yrityksesi ansaitsee<br>verkkosivut jotka<br><em>tekevat toita.</em></h1>
-        <p>Ammattimaiset verkkosivut, yllapito ja jatkuvat paivitykset yhdella kiintealla kuukausimaksulla. Ei toimistolaskuja. Ei yllatyksia.</p>
+        <div class="hero-badge" id="hero-badge">Verkkosivut kuukausimaksulla - kaikki mukana</div>
+        <h1 id="hero-heading">Yrityksesi ansaitsee<br>verkkosivut jotka<br><em>tekevät töitä.</em></h1>
+        <p id="hero-text">Ammattimaiset verkkosivut, ylläpito ja jatkuvat päivitykset yhdellä kiinteällä kuukausimaksulla. Ei toimistolaskuja. Ei yllätyksiä.</p>
         <div class="hero-cta-group">
-          <button class="btn-primary" type="button" onclick="openModal()">Aloita - sivusto valmis 14 paivassa</button>
-          <button class="btn-secondary" type="button" onclick="scrollToSection('solutions')">Katso esimerkit</button>
+          <button class="btn-primary" id="hero-cta" type="button" onclick="openModal()">Aloita - sivusto valmis 14 päivässä</button>
+          <button class="btn-secondary" id="hero-secondary" type="button" onclick="scrollToSection('solutions')">Katso esimerkit</button>
         </div>
         <div class="hero-stats">
-          <div class="stat"><div class="stat-num">14</div><div class="stat-label">paivaa sivusto valmiina</div></div>
-          <div class="stat"><div class="stat-num orange">∞</div><div class="stat-label">paivityksia kuukaudessa</div></div>
-          <div class="stat"><div class="stat-num">3</div><div class="stat-label">kielta vakiona</div></div>
+          <div class="stat"><div class="stat-num">14</div><div class="stat-label">päivää sivusto valmiina</div></div>
+          <div class="stat"><div class="stat-num orange">∞</div><div class="stat-label">päivityksiä kuukaudessa</div></div>
+          <div class="stat"><div class="stat-num">3</div><div class="stat-label">kieltä vakiona</div></div>
           <div class="stat"><div class="stat-num">0</div><div class="stat-label">piilokustannuksia</div></div>
         </div>
       </section>
 
       <section class="section alt" aria-labelledby="how-heading">
-        <div class="section-label">Miten se toimii</div>
+        <div class="section-label" id="how-label">Miten se toimii</div>
         <h2 id="how-heading">Kolme vaihetta.<br>Sitten unohda se.</h2>
         <div>
           <div class="step"><div class="step-num">1</div><div><h3>Kerrot yrityksestasi</h3><p>Taytat lyhyen lomakkeen - toimiala, logo, varit, sisalto. 15 minuuttia, ei enempaa.</p></div></div>
@@ -60,16 +64,16 @@
       </section>
 
       <section class="section" id="solutions" aria-labelledby="solutions-heading">
-        <div class="section-label">Ratkaisut</div>
+        <div class="section-label" id="solutions-label">Ratkaisut</div>
         <h2 id="solutions-heading">Tehty juuri sinun alallesi.</h2>
-        <p class="body">Jokaisella alalla on omat tarpeensa. Skripti tunnistaa ne.</p>
+        <p class="body" id="solutions-body">Jokaisella alalla on omat tarpeensa. Skripti tunnistaa ne.</p>
         <div class="tabs" id="sol-tabs"></div>
         <div class="sol-panel" id="sol-panel"></div>
       </section>
 
       <section class="section alt" id="pricing" aria-labelledby="pricing-heading">
-        <div class="section-label">Hinnoittelu</div>
-        <h2 id="pricing-heading">Selkea hinta.<br>Ei piilokuluja.</h2>
+        <div class="section-label" id="pricing-label">Hinnoittelu</div>
+        <h2 id="pricing-heading">Selkeä hinta.<br>Ei piilokuluja.</h2>
         <div class="pricing-grid">
           <article class="pc">
             <div class="pc-tier">Starter</div>
@@ -107,21 +111,21 @@
       </section>
 
       <section class="section" id="faq" aria-labelledby="faq-heading">
-        <div class="section-label">UKK</div>
-        <h2 id="faq-heading">Usein kysyttya.</h2>
+        <div class="section-label" id="faq-label">UKK</div>
+        <h2 id="faq-heading">Usein kysyttyä.</h2>
         <div id="faq-list"></div>
       </section>
 
       <section class="final-cta" aria-labelledby="cta-heading">
         <h2 id="cta-heading">Valmis aloittamaan?<br><em>Sivusto valmiina 14 paivassa.</em></h2>
-        <p>Liity satojen suomalaisten yritysten joukkoon joilla on verkkosivut jotka toimivat.</p>
-        <button class="btn-primary" style="font-size:15px;padding:14px 32px;" type="button" onclick="openModal()">Aloita nyt - valitse pakettisi</button>
+        <p id="final-cta-text">Liity satojen suomalaisten yritysten joukkoon joilla on verkkosivut jotka toimivat.</p>
+        <button class="btn-primary" id="final-cta-button" style="font-size:15px;padding:14px 32px;" type="button" onclick="openModal()">Aloita nyt - valitse pakettisi</button>
       </section>
     </main>
 
     <footer class="footer">
       <div class="footer-logo">Skripti<span>.</span></div>
-      <div class="footer-r">skripti.fi - Helsinki, Suomi</div>
+      <div class="footer-r" id="footer-text">skripti.fi - Helsinki, Suomi</div>
     </footer>
   </div>
 

@@ -7,6 +7,9 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
 .nav-logo{font-size:18px;font-weight:500;color:#fff;letter-spacing:-0.02em;cursor:pointer;}
 .nav-logo span{color:#F97316;}
 .nav-links{display:flex;gap:20px;align-items:center;}
+.lang-toggle{display:flex;gap:4px;border:1px solid rgba(255,255,255,0.2);border-radius:8px;padding:2px;}
+.lang-btn{background:transparent;border:none;color:rgba(255,255,255,0.7);font-size:12px;padding:4px 8px;border-radius:6px;cursor:pointer;}
+.lang-btn.active{background:#F97316;color:#fff;}
 .nav-link{font-size:13px;color:rgba(255,255,255,0.5);cursor:pointer;background:none;border:none;}
 .nav-link:hover{color:rgba(255,255,255,0.8);}
 .nav-cta{font-size:13px;font-weight:500;color:#fff;background:#F97316;padding:8px 18px;border-radius:8px;cursor:pointer;border:none;}
