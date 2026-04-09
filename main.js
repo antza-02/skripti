@@ -1,4 +1,4 @@
-const FORM_ENDPOINT = "https://formspree.io/f/YOUR_FORM_ID";
+const FORM_ENDPOINT = "https://formspree.io/f/xzdkqlgy";
 
 const solutions = [
   { id: "ravintolat", label: "Ravintolat", title: "Ravintolat & kahvilat", sub: "Ruokalista, varaukset, tapahtumat", feats: [["Integraatio", "Tableonline-varaus"], ["Sisalto", "Ruokalista + kausipaivitykset"], ["Kielet", "FI, EN, SV vakiona"], ["Erikoisuus", "Tapahtumasivut"]], quote: "\"Uusi sesonkiruokalista paivitetty tunnissa - ennen se vei koko paivan.\"" },
@@ -231,17 +231,12 @@ async function submitLead() {
   };
 
   try {
-    if (!FORM_ENDPOINT.includes("YOUR_FORM_ID")) {
-      const res = await fetch(FORM_ENDPOINT, {
-        method: "POST",
-        headers: { "Content-Type": "application/json", Accept: "application/json" },
-        body: JSON.stringify(payload)
-      });
-      if (!res.ok) throw new Error("submit_failed");
-    } else {
-      await new Promise((resolve) => setTimeout(resolve, 900));
-      console.warn("Set FORM_ENDPOINT in main.js to your real Formspree endpoint.");
-    }
+    const res = await fetch(FORM_ENDPOINT, {
+      method: "POST",
+      headers: { "Content-Type": "application/json", Accept: "application/json" },
+      body: JSON.stringify(payload)
+    });
+    if (!res.ok) throw new Error("submit_failed");
     modalStep = 5;
     renderModal();
   } catch (err) {
